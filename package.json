@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Pablo Cru Delhom (pabcrudel)",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "standard": "^17.1.0",
     "vitest": "^1.0.2"
