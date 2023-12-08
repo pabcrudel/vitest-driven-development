@@ -9,6 +9,7 @@
   "author": "Pablo Cru Delhom (pabcrudel)",
   "license": "ISC",
   "devDependencies": {
+    "standard": "^17.1.0",
     "vitest": "^1.0.2"
   }
 }
