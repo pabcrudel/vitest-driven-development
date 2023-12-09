@@ -1,5 +1,5 @@
 import { cleanup, render, screen } from '@testing-library/react'
-import { afterEach, describe, it } from 'vitest'
+import { afterEach, beforeEach, describe, it } from 'vitest'
 import { Calculator, numbers } from '../src/calculator'
 
 /** DISCLAIMER: (December 2023)
@@ -32,14 +32,21 @@ describe('Calculator', () => {
   */
   afterEach(cleanup)
 
+  /** As each test on this tutorial renders the component, I consider that is a
+   * better approach to do so at the beginning of each test.
+   * Other approach that fits to me is delete `afterEach()` and `beforeEach()`
+   * but leaving `render(<Calculator />)` on first test.
+   * In this case, I'm using `afterEach()` and `beforeEach()` because I want to
+   * leave here how to perform something for each test, at the beginning or at
+   * the end.
+   */
+  beforeEach(() => render(<Calculator />))
+
   it('should render', () => {
-    // Allows me to test React components
-    render(<Calculator />)
+    // `render(<Calculator />)` => Allows me to test React components
   })
 
   it('should render "Calculator" anywhere in the document', () => {
-    render(<Calculator />)
-
     /** Gets from the screen anything with the provided text.
      * It doesn't need `expect()` because `screen` is performing the test.
      * If 'calculator' is not there, it will throw an error.
@@ -49,8 +56,6 @@ describe('Calculator', () => {
   })
 
   it('should render numbers anywhere in the document', () => {
-    render(<Calculator />)
-
     numbers.forEach(number => screen.getByText(number))
   })
 })
