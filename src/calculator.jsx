@@ -5,6 +5,8 @@ const calculatorUI = [
   [0]
 ]
 
+export const operators = ['+', '-', '*', '/']
+
 export const Calculator = () => {
   return (
     <div>
@@ -30,10 +32,12 @@ export const Calculator = () => {
               {
                 numbers.map(number => <p key={number}>{number}</p>)
               }
+              <p key={operators[i]}>{operators[i]}</p>
             </div>
           ))
         }
       </div>
+      <p>=</p>
     </div>
   )
 }

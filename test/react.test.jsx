@@ -1,6 +1,6 @@
 import { cleanup, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
-import { Calculator } from '../src/calculator'
+import { Calculator, operators } from '../src/calculator'
 
 /** DISCLAIMER: (December 2023)
  * That's my first time using React. I so confident with Vue.js so I consider
@@ -63,5 +63,13 @@ describe('Calculator', () => {
     const rows = screen.getAllByRole('row')
 
     expect(rows).toHaveLength(4)
+  })
+
+  it('should render math operators: ' + String(operators), () => {
+    operators.forEach(operator => screen.getByText(operator))
+  })
+
+  it('should render an equal sign', () => {
+    screen.getByText('=')
   })
 })
