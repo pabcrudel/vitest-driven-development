@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 const calculatorUI = [
   [7, 8, 9],
   [4, 5, 6],
@@ -8,6 +10,8 @@ const calculatorUI = [
 export const operators = ['+', '-', '*', '/']
 
 export const Calculator = () => {
+  const [value, setValue] = useState('')
+
   return (
     <div>
       <h1>Calculator</h1>
@@ -25,12 +29,26 @@ export const Calculator = () => {
          */
       }
 
+      {/** `readonly` only allows changes by clicking on the buttons
+       * If this property is not provided, Vitest will warn. However, as this
+       * the expected behavior, `readonly` must be set
+      */}
+      <input type='text' value={value} readOnly />
       <div role='grid'>
         {
           calculatorUI.map((numbers, i) => (
             <div key={i} role='row'>
               {
-                numbers.map(number => <p key={number}>{number}</p>)
+                numbers.map(number => {
+                  return (
+                    <button
+                      onClick={() => setValue(value.concat(number))}
+                      key={number}
+                    >
+                      {number}
+                    </button>
+                  )
+                })
               }
               <p key={operators[i]}>{operators[i]}</p>
             </div>

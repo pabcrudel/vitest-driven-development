@@ -1,6 +1,8 @@
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { Calculator, operators } from '../src/calculator'
+
+const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 /** DISCLAIMER: (December 2023)
  * That's my first time using React. I so confident with Vue.js so I consider
@@ -55,8 +57,7 @@ describe('Calculator', () => {
   })
 
   it('should render numbers anywhere in the document', () => {
-    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-      .forEach(number => screen.getByText(number))
+    numbers.forEach(number => screen.getByText(number))
   })
 
   it('should render 4 rows like in a calculator UI', () => {
@@ -71,5 +72,30 @@ describe('Calculator', () => {
 
   it('should render an equal sign', () => {
     screen.getByText('=')
+  })
+
+  it('should render an input', () => {
+    screen.getByRole('textbox')
+  })
+
+  it('should print the number after being clicked by the user', () => {
+    const one = screen.getByText('1')
+    // `fireEvent` will trigger the event on the HTML event provided
+    fireEvent.click(one)
+
+    const input = screen.getByRole('textbox')
+    expect(input.value).toBe('1')
+  })
+
+  it('should print several numbers after being clicked by the user', () => {
+    let result = ''
+
+    for (const number of numbers) {
+      fireEvent.click(screen.getByText(number))
+
+      result += number
+    }
+    const input = screen.getByRole('textbox')
+    expect(input.value).toBe(result)
   })
 })
