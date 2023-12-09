@@ -12,6 +12,10 @@ export const operators = ['+', '-', '*', '/']
 export const Calculator = () => {
   const [value, setValue] = useState('')
 
+  /* This arrow function calls an arrow function because is the callback of
+   * the button's onClick event */
+  const createHandleClick = op => () => setValue(value.concat(op))
+
   return (
     <div>
       <h1>Calculator</h1>
@@ -42,7 +46,7 @@ export const Calculator = () => {
                 numbers.map(number => {
                   return (
                     <button
-                      onClick={() => setValue(value.concat(number))}
+                      onClick={createHandleClick(number)}
                       key={number}
                     >
                       {number}
@@ -50,7 +54,12 @@ export const Calculator = () => {
                   )
                 })
               }
-              <p key={operators[i]}>{operators[i]}</p>
+              <button
+                onClick={createHandleClick(operators[i])}
+                key={operators[i]}
+              >
+                {operators[i]}
+              </button>
             </div>
           ))
         }

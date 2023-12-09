@@ -98,4 +98,16 @@ describe('Calculator', () => {
     const input = screen.getByRole('textbox')
     expect(input.value).toBe(result)
   })
+
+  it('should print numbers and operator after being clicked by the user', () => {
+    const one = screen.getByText('1')
+    fireEvent.click(one)
+
+    const plus = screen.getByText('+')
+    fireEvent.click(plus)
+    fireEvent.click(one)
+
+    const input = screen.getByRole('textbox')
+    expect(input.value).toBe('1+1')
+  })
 })
