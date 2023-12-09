@@ -1,6 +1,6 @@
 import { cleanup, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
-import { Calculator, numbers } from '../src/calculator'
+import { Calculator } from '../src/calculator'
 
 /** DISCLAIMER: (December 2023)
  * That's my first time using React. I so confident with Vue.js so I consider
@@ -55,7 +55,8 @@ describe('Calculator', () => {
   })
 
   it('should render numbers anywhere in the document', () => {
-    numbers.forEach(number => screen.getByText(number))
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+      .forEach(number => screen.getByText(number))
   })
 
   it('should render 4 rows like in a calculator UI', () => {
