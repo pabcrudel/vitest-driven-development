@@ -1,4 +1,6 @@
+import { render } from '@testing-library/react'
 import { describe, it } from 'vitest'
+import { Calculator } from '../src/calculator'
 
 /**
  * DISCLAIMER: (December 2023)
@@ -8,5 +10,8 @@ import { describe, it } from 'vitest'
  */
 
 describe('Calculator', () => {
-  it('', () => {})
+  it('should render', () => {
+    // Allows me to test React components
+    render(<Calculator />)
+  })
 })
