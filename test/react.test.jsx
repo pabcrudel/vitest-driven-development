@@ -1,5 +1,5 @@
 import { cleanup, render, screen } from '@testing-library/react'
-import { afterEach, beforeEach, describe, it } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { Calculator, numbers } from '../src/calculator'
 
 /** DISCLAIMER: (December 2023)
@@ -51,11 +51,16 @@ describe('Calculator', () => {
      * It doesn't need `expect()` because `screen` is performing the test.
      * If 'calculator' is not there, it will throw an error.
      */
-    // screen.getByText('Calculator')
     screen.getByText('Calculator')
   })
 
   it('should render numbers anywhere in the document', () => {
     numbers.forEach(number => screen.getByText(number))
+  })
+
+  it('should render 4 rows like in a calculator UI', () => {
+    const rows = screen.getAllByRole('row')
+
+    expect(rows).toHaveLength(4)
   })
 })
