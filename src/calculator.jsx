@@ -1,3 +1,4 @@
+import { evaluate } from 'mathjs'
 import { useState } from 'react'
 
 const calculatorUI = [
@@ -64,7 +65,7 @@ export const Calculator = () => {
           ))
         }
       </div>
-      <p>=</p>
+      <button onClick={() => setValue(evaluate(value))}>=</button>
     </div>
   )
 }
