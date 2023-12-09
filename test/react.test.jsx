@@ -32,8 +32,8 @@ describe('Calculator', () => {
   */
   afterEach(cleanup)
 
-  /** As each test on this tutorial renders the component, I consider that is a
-   * better approach to do so at the beginning of each test.
+  /** As each test on this tutorial renders the component, I consider that is
+   * a better approach to do so at the beginning of each test.
    * Other approach that fits to me is delete `afterEach()` and `beforeEach()`
    * but leaving `render(<Calculator />)` on first test.
    * In this case, I'm using `afterEach()` and `beforeEach()` because I want to
