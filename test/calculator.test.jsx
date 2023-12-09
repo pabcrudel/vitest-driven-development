@@ -1,6 +1,6 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
-import { Calculator, operators } from '../src/calculator'
+import { Calculator, operators } from '../src/Calculator'
 
 const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
