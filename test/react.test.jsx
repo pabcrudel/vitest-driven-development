@@ -1,6 +1,6 @@
 import { cleanup, render, screen } from '@testing-library/react'
 import { afterEach, describe, it } from 'vitest'
-import { Calculator } from '../src/calculator'
+import { Calculator, numbers } from '../src/calculator'
 
 /** DISCLAIMER: (December 2023)
  * That's my first time using React. I so confident with Vue.js so I consider
@@ -37,7 +37,7 @@ describe('Calculator', () => {
     render(<Calculator />)
   })
 
-  it('should render "Calculator" anywhere in the document correctly', () => {
+  it('should render "Calculator" anywhere in the document', () => {
     render(<Calculator />)
 
     /** Gets from the screen anything with the provided text.
@@ -46,5 +46,11 @@ describe('Calculator', () => {
      */
     // screen.getByText('Calculator')
     screen.getByText('Calculator')
+  })
+
+  it('should render numbers anywhere in the document', () => {
+    render(<Calculator />)
+
+    numbers.forEach(number => screen.getByText(number))
   })
 })
