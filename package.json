@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage --reporter verbose "
   },
   "author": "Pablo Cru Delhom (pabcrudel)",
   "license": "MIT",
